@@ -35,11 +35,19 @@ public class ProductoController {
         if(producto.isPresent())
             return ResponseEntity.ok(producto);
         return ResponseEntity.notFound().build();
+
+    }
+    @GetMapping("/{stock}")
+    public ResponseEntity<List<Producto>> getProductosByStock(){
+        List<Producto> stocks = productoService.getProductosByStock();
+        if(stocks.isEmpty())
+            return ResponseEntity.ok(stocks);
+        return ResponseEntity.ok(stocks);
     }
     @GetMapping("/search")
     public ResponseEntity<List<Producto>> searchProducto(@RequestParam String name){
-        List<Producto> series = productoService.searchByName(name);
-        return ResponseEntity.ok(series);
+        List<Producto> productos = productoService.searchByName(name);
+        return ResponseEntity.ok(productos);
     }
 
     @DeleteMapping("/{idProducto}")
