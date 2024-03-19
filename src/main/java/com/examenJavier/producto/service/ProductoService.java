@@ -19,6 +19,10 @@ public class ProductoService {
         return productoRepository.findById(id);
     }
 
+    public List<Producto> getProductosByStock(){
+        return productoRepository.findAll();
+    }
+
     public Producto saveOrUpdate(Producto producto) {
         return productoRepository.save(producto);
     }
